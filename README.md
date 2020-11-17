@@ -7,7 +7,7 @@ It is so obvious that an average **PULMONOLOGIST** spent several hour to diagnos
 
 Our project provides a Web based solution for this challenges faced by **PULMONOLOGIST**.
 
-This solution helps to visually inspect a sample of X-Ray chest images in order to classify or predict the image according to the categories of Chest Disease.
+This solution visually inspect a sample of X-Ray chest images and predict the sample image according to the categories of Chest Disease.
 
 Various categories of Chest Disease that could been classified in this solution are **Atelectasis**, **Infiltration**, **Effusion**, **Cardiomegaly** and **Fibrosis**.
 

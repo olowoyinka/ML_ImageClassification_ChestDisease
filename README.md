@@ -1,12 +1,13 @@
 # VISUAL INSPECTION AND CLASSIFICATION X-RAY CHEST DISEASE
 
-##TEAM NAME
+## TEAM NAME
 
 Ray Team
 
 ## CONTACT INFORMATION
 
 **Name**: YINKA OLOWOFELA
+
 **Email Address**: olowofelayinka@gmail.com
 
 ## SOURCE CODE

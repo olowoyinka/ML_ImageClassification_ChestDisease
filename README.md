@@ -3,9 +3,9 @@
 
 ## DESCRIPTION
 
-It is so obvious that an average **PULMONOLOGIST** spent several hour to diagnosis a sample image of X-Ray chest. Most especially, the diagnosis that involves classifying the kind of chest disease. 
+It is so obvious that an average **PULMONOLOGIST** spent several hour to diagnosis a sample image of X-Ray chest. Most especially, the diagnosis involves classifying different kind of disease that occurs in the chest. 
 
-Our project provides a Web based solution for **PULMONOLOGIST**.
+Our project provides a Web based solution for this challenges faced by **PULMONOLOGIST**.
 
 This solution helps to visually inspect a sample of X-Ray chest images in order to classify or predict the image according to the categories of Chest Disease.
 

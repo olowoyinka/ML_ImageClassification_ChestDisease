@@ -11,6 +11,6 @@ This solution helps to visually inspect a sample of X-Ray chest images in order 
 
 Various categories of Chest Disease that could been classified in this solution are **Atelectasis**, **Infiltration**, **Effusion**, **Cardiomegaly** and **Fibrosis**.
 
-We leverage on Deep Learning Image Classification Model with ML.NET and Tensorflow to train the model
+We leverage on Deep Learning Image Classification Model with ML.NET and Tensorflow to train the model used for the prediction or classifying the sample images
 
 The Dataset for the training the model was found in **Kaggle** https://www.kaggle.com/yashprakash13/chest-xrays-dataset

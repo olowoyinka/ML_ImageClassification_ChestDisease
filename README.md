@@ -11,6 +11,6 @@ This solution visually inspect a sample of X-Ray chest images and predict the sa
 
 Various categories of Chest Disease that could been predicted in this solution are **Atelectasis**, **Infiltration**, **Effusion**, **Cardiomegaly** and **Fibrosis**.
 
-We leverage on Deep Learning Image Classification Model with ML.NET and Tensorflow to train the model used for the predicting or classifying the sample images.
+We leverage on Deep Learning Model using Transfer Learning, a Pretrained TensorFlow model and the ML.NET Image Classification API to train the model used for the predicting or classifying the sample images.
 
 The Dataset for the training the model was found in **Kaggle** https://www.kaggle.com/yashprakash13/chest-xrays-dataset

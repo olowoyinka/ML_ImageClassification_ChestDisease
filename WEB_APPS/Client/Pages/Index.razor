@@ -1,0 +1,129 @@
+﻿@page "/"
+
+
+<section id="pricing" class="section-padding">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Upload a Sample of X-Ray Chest Image</h2>
+            <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="table wow fadeInLeft" data-wow-delay="1.2s">
+                    <input type="file" class="btn btn-common" @ref="inputReference" @onchange="async () => await UploadProfilePictureAsync()"/>
+                    <hr/>
+                    <div class="pricing-header">
+                        @if (imagePredicted.ImageId == null)
+                        {
+                            if (showCase == true)
+                            {
+                                <div class="loader" id="loader-1"></div>
+                                <div class="title">
+                                    <h3 style="color:#F63854">Uploading Image</h3>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <img img class="img-fluid" src="/Images/@imagePredicted.ImageId" alt="">
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 active">
+                @if (imagePredicted.ImageId == null)
+                {
+                    if (showCase == true)
+                    {
+
+                        <div class="table wow fadeInUp" id="active-tb" data-wow-delay="1.2s">
+                            <div class="loader" id="loader-1"></div>
+                            <div class="title">
+                                <h3 style="color:#F63854">Processing Image</h3>
+                            </div>
+                            <hr />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table wow fadeInUp" id="active-tb" data-wow-delay="1.2s">
+                            <div class="title">
+                                <h1 style="color:#F63854">RESULT WILL BE DISPLAY HERE</h1>
+                            </div>
+                            <hr />
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="table wow fadeInUp" id="active-tb" data-wow-delay="1.2s">
+                        <button class="btn btn-common">.......... RESULT ..........</button>
+                        <hr />
+                        <div class="title">
+                            <h3>Chest Disease - @imagePredicted.PredictedLabel</h3>
+                        </div>
+                        <hr />
+                        <div class="title">
+                            <h3>Prediction Accuracy - @imagePredicted.Probability%</h3>
+                        </div>
+                        <hr />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@code{
+
+    ElementReference inputReference;
+
+    string fileName = string.Empty;
+
+    Stream fileStream = null;
+
+    bool showCase = false;
+
+    ImagePredictedLabelWithProbability imagePredicted = new ImagePredictedLabelWithProbability();
+
+    async Task UploadProfilePictureAsync()
+    {
+        imagePredicted.ImageId = null;
+
+        showCase = true;
+
+        var file = (await fileReader.CreateReference(inputReference).EnumerateFilesAsync()).FirstOrDefault();
+
+        if (file == null)
+            return;
+
+        var fileInfo = await file.ReadFileInfoAsync();
+
+        fileName = fileInfo.Name;
+
+        using (var ms = await file.CreateMemoryStreamAsync((int)fileInfo.Size))
+        {
+            fileStream = new MemoryStream(ms.ToArray());
+        }
+
+        var content = new MultipartFormDataContent();
+
+        content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data");
+
+        content.Add(new StreamContent(fileStream, (int)fileStream.Length), "image", fileName);
+
+        var response = await http.PostAsync("api/ImageClassification/classifyImage", content);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var uploadedFileName = await response.Content.ReadAsStringAsync();
+
+            imagePredicted = await response.Content.ReadFromJsonAsync<ImagePredictedLabelWithProbability>();
+        }
+
+        showCase = false;
+
+        StateHasChanged();
+    }
+}

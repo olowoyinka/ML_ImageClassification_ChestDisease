@@ -9,7 +9,7 @@ Our project provides a Web based solution for this challenges faced by **PULMONO
 
 This solution visually inspect a sample of X-Ray chest images and predict the sample image according to the categories of Chest Disease.
 
-Various categories of Chest Disease that could been classified in this solution are **Atelectasis**, **Infiltration**, **Effusion**, **Cardiomegaly** and **Fibrosis**.
+Various categories of Chest Disease that could been predicted in this solution are **Atelectasis**, **Infiltration**, **Effusion**, **Cardiomegaly** and **Fibrosis**.
 
 We leverage on Deep Learning Image Classification Model with ML.NET and Tensorflow to train the model used for the predicting or classifying the sample images.
 

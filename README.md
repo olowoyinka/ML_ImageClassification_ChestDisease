@@ -3,7 +3,7 @@
 
 ## DESCRIPTION
 
-It is so obvious that an average **PULMONOLOGIST** spent several hour to diagnosis a sample image of X-Ray chest. Most especially, the diagnosis involves classifying different kind of disease that occurs in the chest. 
+It is so obvious that an average **PULMONOLOGIST** spent several hour to diagnosis a sample image of X-Ray chest. Most especially, when diagnosis involves classifying different kind of disease that occurs in the chest. 
 
 Our project provides a Web based solution for this challenges faced by **PULMONOLOGIST**.
 
